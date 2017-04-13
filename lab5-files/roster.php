@@ -9,7 +9,7 @@ if (is_numeric($_GET['teamId'])) {
 
 	require_once('db.php');
 
-	$sql = "SELECT racerName, age, sex, phoneNum FROM racers WHERE teamId = teamId ORDER BY racerName";
+	$sql = "SELECT racerName, age, sex, phoneNum FROM racers WHERE teamId = :teamId ORDER BY racerName";
 	$cmd = $conn->prepare($sql);
 	$cmd->bindParam(':teamId', $teamId, PDO::PARAM_INT);
 	$cmd->execute();
